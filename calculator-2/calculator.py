@@ -22,7 +22,7 @@ def calculator_2():
             num2 = int(tokens[2])
 
 
-        if input_string == "q":
+        if input_string == "q" or "quit":
             break
 
         elif tokens[0] == "-":
