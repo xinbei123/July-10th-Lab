@@ -12,8 +12,13 @@ while True:
 
     input_string = input("enter something ")
     tokens = input_string.split(" ")
-    num1 = int(tokens[1])
-    num2 = int(tokens[2])
+
+    if len(tokens) < 3 and len(tokens) > 1:
+        num1 = int(tokens[1])
+    elif len(tokens) == 3:
+        num1 = int(tokens[1])
+        num2 = int(tokens[2])
+
 
     if input_string == "q":
         break
@@ -35,11 +40,11 @@ while True:
         print(answer)
 
     elif tokens[0] == "square":
-        answer = square(num1, num2)
+        answer = square(num1)
         print(answer)
 
     elif tokens[0] == "cube":
-        answer = cube(num1, num2)
+        answer = cube(num1)
         print(answer)
 
     elif tokens[0] == "power":
