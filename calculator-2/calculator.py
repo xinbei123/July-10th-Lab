@@ -25,3 +25,27 @@ while True:
     elif tokens[0] == "+":
         answer = add(num1, num2)
         print(answer)
+
+    elif tokens[0] == "*":
+        answer = multiply(num1, num2)
+        print(answer)
+
+    elif tokens[0] == "/":
+        answer = divide(num1, num2)
+        print(answer)
+
+    elif tokens[0] == "square":
+        answer = square(num1, num2)
+        print(answer)
+
+    elif tokens[0] == "cube":
+        answer = cube(num1, num2)
+        print(answer)
+
+    elif tokens[0] == "power":
+        answer = power(num1, num2)
+        print(answer)
+
+    elif tokens[0] == "mod":
+        answer = mod(num1, num2)
+        print(answer)
