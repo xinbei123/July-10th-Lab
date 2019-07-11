@@ -11,44 +11,52 @@ def calculator_2():
 
     while True:
 
-        input_string = input("enter something ")
-        tokens = input_string.split(" ")
-        answer = None
+        try: 
+            input_string = input("enter something ")
+            tokens = input_string.split(" ")
 
-        if len(tokens) < 3 and len(tokens) > 1:
-            num1 = int(tokens[1])
-        elif len(tokens) == 3:
-            num1 = int(tokens[1])
-            num2 = int(tokens[2])
+            answer = None
 
+            if len(tokens) < 3 and len(tokens) > 1:
+                num1 = int(tokens[1])
+            elif len(tokens) == 3:
+                num1 = int(tokens[1])
+                num2 = int(tokens[2])
+           
 
-        if input_string == "q" or "quit":
-            break
+            if input_string == "q" or input_string == "quit":
+                break
 
-        elif tokens[0] == "-":
-            answer = subtract(num1, num2)
+            elif tokens[0] == "-":
+                answer = subtract(num1, num2)
 
-        elif tokens[0] == "+":
-            answer = add(num1, num2)
+            elif tokens[0] == "+":
+                answer = add(num1, num2)
 
-        elif tokens[0] == "*":
-            answer = multiply(num1, num2)
+            elif tokens[0] == "*":
+                answer = multiply(num1, num2)
 
-        elif tokens[0] == "/":
-            answer = divide(num1, num2)
+            elif tokens[0] == "/":
+                answer = divide(num1, num2)
 
-        elif tokens[0] == "square":
-            answer = square(num1)
+            elif tokens[0] == "square":
+                answer = square(num1)
 
-        elif tokens[0] == "cube":
-            answer = cube(num1)
+            elif tokens[0] == "cube":
+                answer = cube(num1)
 
-        elif tokens[0] == "power":
-            answer = power(num1, num2)
+            elif tokens[0] == "power":
+                answer = power(num1, num2)
 
-        elif tokens[0] == "mod":
-            answer = mod(num1, num2)
+            elif tokens[0] == "mod":
+                answer = mod(num1, num2)
 
-        print(answer)
+            else:
+                print("Please enter it again.")
+                
+            print(answer)
+        
+        except:
+            print("Please enter it again.")
 
 calculator_2()
