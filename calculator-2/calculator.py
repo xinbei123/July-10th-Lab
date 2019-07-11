@@ -1,62 +1,76 @@
-"""A prefix-notation calculator.
-
-Using the arithmetic.py file from Calculator Part 1, create the
-calculator program yourself in this file.
-"""
-
-from arithmetic import * 
+"""A prefix-notation calculator."""
 
 
-def calculator_2():
+from arithmetic import *
 
-    while True:
 
-        try: 
-            input_string = input("enter something ")
-            tokens = input_string.split(" ")
+while True:
+    user_input = input("> ")
+    tokens = user_input.split(" ")
 
-            answer = None
+    if "q" in tokens:
+        print("You will exit.")
+        break
 
-            if len(tokens) < 3 and len(tokens) > 1:
-                num1 = int(tokens[1])
-            elif len(tokens) == 3:
-                num1 = int(tokens[1])
-                num2 = int(tokens[2])
-           
+    elif len(tokens) < 2:
+        print("Not enough inputs.")
+        continue
 
-            if input_string == "q" or input_string == "quit":
-                break
+    operator = tokens[0]
+    num1 = tokens[1]
 
-            elif tokens[0] == "-":
-                answer = subtract(num1, num2)
+    if len(tokens) < 3:
+        num2 = "0"
 
-            elif tokens[0] == "+":
-                answer = add(num1, num2)
+    else:
+        num2 = tokens[2]
 
-            elif tokens[0] == "*":
-                answer = multiply(num1, num2)
+    if len(tokens) > 3:
+        num3 = tokens[3]
 
-            elif tokens[0] == "/":
-                answer = divide(num1, num2)
+    # A place to store the return value of the math function we call,
+    # to give us one clear place where that result is printed.
+    result = None
 
-            elif tokens[0] == "square":
-                answer = square(num1)
+    if not num1.isdigit() or not num2.isdigit():
+        print("Those aren't numbers!")
+        continue
 
-            elif tokens[0] == "cube":
-                answer = cube(num1)
+    # We have to cast each value we pass to an arithmetic function from a
+    # a string into a numeric type. If we use float across the board, all
+    # results will have decimal points, so let's do that for consistency.
 
-            elif tokens[0] == "power":
-                answer = power(num1, num2)
+    elif operator == "+":
+        result = add(float(num1), float(num2))
 
-            elif tokens[0] == "mod":
-                answer = mod(num1, num2)
+    elif operator == "-":
+        result = subtract(float(num1), float(num2))
 
-            else:
-                print("Please enter it again.")
-                
-            print(answer)
-        
-        except:
-            print("Please enter it again.")
+    elif operator == "*":
+        result = multiply(float(num1), float(num2))
 
-calculator_2()
+    elif operator == "/":
+        result = divide(float(num1), float(num2))
+
+    elif operator == "square":
+        result = square(float(num1))
+
+    elif operator == "cube":
+        result = cube(float(num1))
+
+    elif operator == "pow":
+        result = power(float(num1), float(num2))
+
+    elif operator == "mod":
+        result = mod(float(num1), float(num2))
+
+    elif operator == "x+":
+        result = add_mult(float(num1), float(num2), float(num3))
+
+    elif operator == "cubes+":
+        result = add_cubes(float(num1), float(num2))
+
+    else:
+        result = "Please enter an operator followed by two integers."
+
+    print(result)
